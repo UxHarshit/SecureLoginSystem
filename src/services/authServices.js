@@ -1,9 +1,17 @@
-const register = async (res, req) => {
-    const { name, lastname, username, email, password } = req.body;
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const register = async (req,res) => {
     try {
+        const { name, lastname, username, email, password } = req.body;
         let user = await User.findOne({ email });
         if (user) {
             return res.status(400).json({ msg: 'User already exists' });
+        }
+        const user_name = await User.findOne({ username });
+        if (user_name) {
+            return res.status(400).json({ msg: 'Username already exists' });
         }
         user = new User({ name, lastname, username, email, password });
         await user.save();
