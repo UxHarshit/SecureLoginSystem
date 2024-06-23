@@ -109,7 +109,4 @@ Update User Details
 ## Author
 Harshit Katheria - [UxHarshit](https:://github.com/UxHarshit)
 
-## Acknowledgements
-- This project was created for a backend internship role assignment by Sky Goal.
-
 
